@@ -56,9 +56,9 @@
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <!-- class="active"-->
-          <li><a href="#">Home</a></li>
-          <li><a href="#/tenant">Tenants</a></li>
-          <li><a href="#/user">Users</a></li>
+          <li ng-class="getClass('/home')"><a href="#">Home</a></li>
+          <li ng-class="getClass('/tenant')"><a href="#/tenant">Tenants</a></li>
+          <li ng-class="getClass('/user')"><a href="#/user">Users</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

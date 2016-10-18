@@ -26,8 +26,8 @@ angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loadin
         $localStorageProvider.setKeyPrefix('dml_');
         
         NotificationProvider.setOptions({
-            delay: 10000,
-            startTop: 40,
+            delay: 5000,
+            startTop: 10,
             startRight: 0,
             verticalSpacing: 20,
             horizontalSpacing: 20,

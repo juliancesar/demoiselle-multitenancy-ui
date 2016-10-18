@@ -15,6 +15,7 @@ angular.module('dml')
                 method: 'GET',
                 url: 'http://localhost:8080/app/api/multiTenancy/createTenancy/' + name
             }).then(function (response) {
+                $scope.name = '';
                 $scope.refreshList();
             }, function (response) {
                 console.log(response);
