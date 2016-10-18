@@ -1,0 +1,31 @@
+{
+  "name": "demoiselle-multitenancy-ui",
+  "homepage": "https://github.com/juliancesar/demoiselle-multitenancy-ui",
+  "authors": [
+    "Julian Cesar dos Santos <julian.santos@serpro.gov.br>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "^2.2.0",
+    "bootstrap": "v4.0.0-alpha.4",
+    "angular-ui-router": "^0.3.1"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.css",
+        "less/bootstrap.less"
+      ]
+    }
+  }
+}

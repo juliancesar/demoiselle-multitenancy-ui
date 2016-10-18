@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>Demoiselle Multi Tenancy</title>
+
+  <!-- bower:css -->
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
+
+  <!-- bower:js -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="lib/tether/dist/js/tether.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- endbower -->
+  
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- endinject -->
+
+  <!-- inject:js -->  
+  <script src="app/app.js"></script>  
+  <script src="app/tenants/tenants.controllers.js"></script>  
+  <!-- endinject -->
+</head>
+
+<body ng-app="dml">
+  <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Demoiselle Multi Tenancy</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <!--class="active"-->
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#/tenants">Inquilinos</a></li>
+                  <li><a href="#/features">Funcionalidades</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div ui-view></div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Orgulhosamente desenvolvido com <a href="http://demoiselle.io">Framework Demoiselle</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+</body>
+
+</html>
