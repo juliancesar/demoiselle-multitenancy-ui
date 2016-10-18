@@ -6,8 +6,11 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <title>Demoiselle Multi Tenancy</title>
 
+  <!-- https://bootswatch.com/united/ -->
   <!-- bower:css -->
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="lib/angular-loading-bar/build/loading-bar.css" />
+  <link rel="stylesheet" href="lib/angular-ui-notification/dist/angular-ui-notification.css" />
   <!-- endbower -->
 
   <!-- bower:js -->
@@ -17,49 +20,57 @@
   <script src="lib/tether/dist/js/tether.js"></script>
   <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
   <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="lib/ngstorage/ngStorage.js"></script>
+  <script src="lib/angular-loading-bar/build/loading-bar.js"></script>
+  <script src="lib/angular-ui-notification/dist/angular-ui-notification.js"></script>
   <!-- endbower -->
-  
+
   <!-- inject:css -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
 
-  <!-- inject:js -->  
-  <script src="app/app.js"></script>  
-  <script src="app/tenants/tenants.controllers.js"></script>  
+  <!-- inject:js -->
+  <script src="app/app.js"></script>
+  <script src="app/common/navbar.controller.js"></script>
+  <script src="app/tenant/tenant.controllers.js"></script>
+  <script src="app/user/user.controller.js"></script>
   <!-- endinject -->
+
 </head>
 
 <body ng-app="dml">
-  <div class="site-wrapper">
 
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Demoiselle Multi Tenancy</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <!--class="active"-->
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#/tenants">Inquilinos</a></li>
-                  <li><a href="#/features">Funcionalidades</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          <div ui-view></div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Orgulhosamente desenvolvido com <a href="http://demoiselle.io">Framework Demoiselle</a>.</p>
-            </div>
-          </div>
-        </div>
+  <nav class="navbar-default navbar-fixed-top" ng-controller="NavBarController">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="#">Demoiselle Multi Tenancy</a>
       </div>
-    </div> 
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <!-- class="active"-->
+          <li><a href="#">Home</a></li>
+          <li><a href="#/tenant">Tenants</a></li>
+          <li><a href="#/user">Users</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#/tenant">{{selectedTenant.name}}</a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div class="container" ui-view></div>
+
 </body>
 
 </html>

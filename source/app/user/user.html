@@ -1,0 +1,37 @@
+<div class="content">
+    <div class="row">
+        <h1>Usuários [{{tenant.name}}]</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th width="100%">Nome</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(key, value) in tenants">
+                        <th scope="row">{{value.id}}</th>
+                        <td>{{value.name}}</td>
+                        <td>
+                            <button type="button" ng-click="select(value)" class="btn btn-primary btn-xs">Selecionar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <form>
+                <div class="form-group">
+                    <label for="name">Nome do Tenant</label>
+                    <input type="text" ng-model="name" class="form-control" id="name" placeholder="Nome">
+                    <p class="help-block">O nome não deve conter espaços e caracteres especiais.</p>
+                </div>
+                <button type="button" ng-click="create(name)" class="btn btn-success">Criar</button>
+            </form>
+        </div>
+    </div>
+</div>

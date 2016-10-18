@@ -1,6 +1,7 @@
-angular.module('dml', ['ui.bootstrap', 'ui.router'])
+// https://github.com/alexcrack/angular-ui-notification
+angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loading-bar', 'ui-notification'])
 
-    .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $localStorageProvider, NotificationProvider) {
 
         // $httpProvider.interceptors.push('HttpInterceptor');
 
@@ -9,12 +10,29 @@ angular.module('dml', ['ui.bootstrap', 'ui.router'])
                 url: '/home',
                 templateUrl: 'app/home/home.html'
             })
-            .state('tenants', {
-                url: '/tenants',
-                templateUrl: 'app/tenants/tenants.html',
-                controller: 'TenantsController'
+            .state('tenant', {
+                url: '/tenant',
+                templateUrl: 'app/tenant/tenant.html',
+                controller: 'TenantController'
+            })
+            .state('user', {
+                url: '/user',
+                templateUrl: 'app/user/user.html',
+                controller: 'UserController'
             });
-            
+
         $urlRouterProvider.otherwise('/home');
+
+        $localStorageProvider.setKeyPrefix('dml_');
+        
+        NotificationProvider.setOptions({
+            delay: 10000,
+            startTop: 40,
+            startRight: 0,
+            verticalSpacing: 20,
+            horizontalSpacing: 20,
+            positionX: 'center',
+            positionY: 'top'
+        });
 
     });
