@@ -1,5 +1,5 @@
 angular.module('dml')
-    .controller('TenantController', function ($scope, $http, Notification, $rootScope) {
+    .controller('TenantController', function ($scope, $http, Notification, $rootScope, ConfigurationService, TenantService) {
         $scope.tenants = [];
 
         $scope.refreshList = function () {
@@ -11,10 +11,7 @@ angular.module('dml')
         };
 
         $scope.create = function (name) {
-            $http({
-                method: 'POST',
-                url: 'http://localhost:8080/app/api/multiTenancy/createTenancy/' + name
-            }).then(function (response) {
+            TenantService.create(name).then(function (response) {
                 $scope.name = '';
                 $scope.refreshList();
             }, function (response) {
@@ -24,14 +21,10 @@ angular.module('dml')
         };
 
         $scope.deleteTenant = function (tenant) {
-            $http({
-                method: 'DELETE',
-                url: 'http://localhost:8080/app/api/multiTenancy/deleteTenant/' + tenant.id
-            }).then(function (response) {
+            TenantService.remove(tenant).then(function (response) {
                 $scope.name = '';
                 $scope.refreshList();
             }, function (response) {
-                console.log(response);
                 Notification.error({ message: 'Verifique os dados e tente novamente' });
             });
         };

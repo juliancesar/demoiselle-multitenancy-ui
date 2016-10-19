@@ -18,10 +18,11 @@
                         <th scope="row">{{value.id}}</th>
                         <td>{{value.name}}</td>
                         <td>
-                            <button type="button" ng-click="select(value)" class="btn btn-warning btn-xs">Selecionar</button>                            
+                            <button type="button" ng-click="select(value)" class="btn btn-warning btn-xs">Selecionar</button>
                         </td>
                         <td>
-                            <button type="button" ng-click="deleteTenant(value)" class="btn btn-danger btn-xs">Excluir</button>
+                            <button type="button" confirm-click="deleteTenant(value)" confirm-click-message="Você tem certeza que deseja excluir o Tenant? ATENÇÃO: Esta operação não tem volta!"
+                                class="btn btn-danger btn-xs">Excluir</button>
                         </td>
                     </tr>
                 </tbody>

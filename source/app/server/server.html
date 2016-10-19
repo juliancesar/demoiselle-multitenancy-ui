@@ -1,0 +1,21 @@
+<div class="content">
+    <div class="row text-center">
+        <h1>Server</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6 text-center">
+            <form novalidate name="form">
+                <div class="form-group form-group-lg" ng-class="{ 'has-error' : form.url.$error.required || form.url.$error.url }">
+                    <input type="url" required ng-model="url" class="form-control text-center" name="url" id="url" placeholder="URL da API da Aplicação - ex: http://localhost:8080/app/api/">
+                </div>
+
+                <div ng-show="form.$submitted || form.url.$touched" class="bg-danger padding form-group">
+                    <span ng-show="form.url.$error.required">Informe uma URL da API.</span>
+                    <span ng-show="form.url.$error.url">A Url informada não é valida.</span>
+                </div>
+                <button type="button" ng-click="setApiUrl(form, url)" class="btn btn-success btn-lg">Salvar</button>
+                <button type="button" ng-click="setApiUrlLocalhost()" class="btn btn-warning btn-lg">Localhost</button>
+            </form>
+        </div>
+    </div>
+</div>
