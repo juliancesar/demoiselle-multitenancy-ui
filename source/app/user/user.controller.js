@@ -44,7 +44,6 @@ angular.module('dml')
             $scope.user = { perfil: "Administrador" };
 
             form.$setPristine();
-            form.$setValidity();
             form.$setUntouched();
         };
 
