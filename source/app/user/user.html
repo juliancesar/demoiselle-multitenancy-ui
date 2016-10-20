@@ -19,10 +19,8 @@
                         <td>{{value.nome}}</td>
                         <td>{{value.email}}</td>
                         <td>
-                            <!--
-                            <button type="button" ng-click="" class="btn btn-danger btn-xs">Excluir</button>
-                            <button type="button" ng-click="" class="btn btn-warning btn-xs">Alterar</button>
-                            -->
+                            <button type="button" confirm-click="deleteUser(value)" confirm-click-message="Você tem certeza que deseja excluir o usuário?"
+                                class="btn btn-danger btn-xs">Excluir</button>
                         </td>
                     </tr>
                 </tbody>

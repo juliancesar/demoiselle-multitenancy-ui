@@ -29,6 +29,14 @@ angular.module('dml')
                 console.log("Dados do formulário inválidos.");
             }
         };
+        
+         $scope.deleteUser = function (user) {
+            UserService.remove(user).then(function (response) {
+                $scope.refreshList();
+            }, function (response) {
+                Notification.error({ message: 'Verifique os dados e tente novamente' });
+            });
+        };
 
         $scope.resetForm = function (form) {
             ValidationService.clear(form);
