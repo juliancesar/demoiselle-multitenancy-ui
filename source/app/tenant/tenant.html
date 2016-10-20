@@ -16,7 +16,10 @@
                 <tbody>
                     <tr ng-repeat="(key, value) in tenants">
                         <th scope="row">{{value.id}}</th>
-                        <td>{{value.name}}</td>
+                        <td>
+                            {{value.name}}
+                            <span class="label label-info" ng-show="selectedTenant.id == value.id">Selecionado</span>
+                        </td>
                         <td>
                             <button type="button" ng-click="select(value)" class="btn btn-warning btn-xs">Selecionar</button>
                         </td>

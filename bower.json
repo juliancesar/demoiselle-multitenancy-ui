@@ -23,6 +23,9 @@
     "angular-ui-notification": "^0.2.0"
   },
   "overrides": {
+    "angular-i18n": {
+      "main": "angular-locale_pt-br.js"
+    },
     "bootstrap": {
       "main": [
         "dist/js/bootstrap.js",

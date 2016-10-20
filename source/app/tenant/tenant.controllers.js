@@ -49,6 +49,12 @@ angular.module('dml')
             $rootScope.$broadcast('change-tenant', tenant);
         };
 
+        $scope.$on('change-tenant', function (event, tenant) {
+            $scope.selectedTenant = ConfigurationService.getTenant();
+            $scope.refreshList();
+        });
+
+        $scope.selectedTenant = ConfigurationService.getTenant();
         $scope.refreshList();
 
     });
