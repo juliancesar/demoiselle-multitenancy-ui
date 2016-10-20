@@ -3,21 +3,33 @@ angular.module('dml')
         $scope.tenants = [];
 
         $scope.refreshList = function () {
-            $http.get('http://localhost:8080/app/api/multiTenancy/list').then(function (response) {
+            TenantService.list().then(function (response) {
                 $scope.tenants = response.data;
             }, function (response) {
                 console.log(response);
             });
         };
 
-        $scope.create = function (name) {
-            TenantService.create(name).then(function (response) {
-                $scope.name = '';
-                $scope.refreshList();
-            }, function (response) {
-                console.log(response);
-                Notification.error({ message: 'Verifique os dados e tente novamente' });
-            });
+        $scope.create = function (form, name) {
+
+            // Valida
+            form.$setSubmitted();
+
+            if (form.$valid) {
+                TenantService.create(name).then(function (response) {
+                    $scope.name = '';
+                    $scope.refreshList();
+
+                    form.$setPristine();
+                    form.$setUntouched();
+                }, function (response) {
+                    console.log(response);
+                    Notification.error({ message: 'Verifique os dados e tente novamente' });
+                });
+            } else {
+                console.log("Dados do formulário inválidos.");
+            }
+
         };
 
         $scope.deleteTenant = function (tenant) {

@@ -22,20 +22,75 @@
                             <!--
                             <button type="button" ng-click="" class="btn btn-danger btn-xs">Excluir</button>
                             <button type="button" ng-click="" class="btn btn-warning btn-xs">Alterar</button>
-                            -->                            
+                            -->
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="col-md-6">
-            <form>
+            <form novalidate name="form">
                 <div class="form-group">
-                    <label for="name">Nome do Tenant</label>
-                    <input type="text" ng-model="name" class="form-control" id="name" placeholder="Nome">
-                    <p class="help-block">O nome não deve conter espaços e caracteres especiais.</p>
+                    <label for="perfil">Perfil</label>
+                    <input type="text" required ng-model="user.perfil" class="form-control" id="perfil" name="perfil" placeholder="Perfil">
+
+                    <div ng-show="form.$submitted || form.perfil.$touched || form.perfil.$error.server" class="text-danger padding form error-message">
+                        <p ng-show="form.perfil.$error.required">Este campo é obrigatório.</p>
+                        <p ng-show="form.perfil.$error.server">{{form.nome.$error.server}}</p>
+                    </div>
                 </div>
-                <button type="button" ng-click="create(name)" class="btn btn-success">Criar</button>
+
+                <div class="form-group">
+                    <label for="nome">Nome do Usuário</label>
+                    <input type="text" required ng-model="user.nome" class="form-control" id="nome" name="nome" placeholder="Nome">
+
+                    <div ng-show="form.$submitted || form.nome.$touched || form.nome.$error.server" class="text-danger padding form error-message">
+                        <p ng-show="form.nome.$error.required">Este campo é obrigatório.</p>
+                        <p ng-show="form.nome.$error.server">{{form.nome.$error.server}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="text" required ng-model="user.email" class="form-control" id="email" name="email" placeholder="E-mail">
+
+                    <div ng-show="form.$submitted || form.email.$touched || form.email.$error.server" class="text-danger padding form error-message">
+                        <p ng-show="form.email.$error.required">Este campo é obrigatório.</p>
+                        <p ng-show="form.email.$error.server">{{form.email.$error.server}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" required ng-model="user.cpf" class="form-control" id="cpf" name="cpf" placeholder="CPF">
+
+                    <div ng-show="form.$submitted || form.cpf.$touched || form.cpf.$error.server" class="text-danger padding form error-message">
+                        <p ng-show="form.cpf.$error.required">Este campo é obrigatório.</p>
+                        <p ng-show="form.cpf.$error.server">{{form.cpf.$error.server}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fone">Telefone</label>
+                    <input type="text" required ng-model="user.fone" class="form-control" id="fone" name="fone" placeholder="Telefone">
+
+                    <div ng-show="form.$submitted || form.fone.$touched || form.fone.$error.server" class="text-danger padding form error-message">
+                        <p ng-show="form.fone.$error.required">Este campo é obrigatório.</p>
+                        <p ng-show="form.fone.$error.server">{{form.fone.$error.server}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" required ng-model="user.senha" class="form-control" id="senha" name="senha" placeholder="Senha">
+
+                    <div ng-show="form.$submitted || form.senha.$touched || form.senha.$error.server" class="text-danger padding form error-message">
+                        <p ng-show="form.senha.$error.required">Este campo é obrigatório.</p>
+                        <p ng-show="form.senha.$error.server">{{form.senha.$error.server}}</p>
+                    </div>
+                </div>
+
+                <button type="button" ng-click="create(form)" class="btn btn-success">Criar</button>
             </form>
         </div>
     </div>

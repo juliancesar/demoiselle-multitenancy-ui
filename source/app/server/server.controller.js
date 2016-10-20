@@ -2,6 +2,10 @@ angular.module('dml')
     .controller('ServerController', function ($scope, $http, Notification, $rootScope, ConfigurationService) {
 
         $scope.setApiUrl = function (form, url) {
+            
+            // Valida
+            form.$setSubmitted();
+            
             if (form.$valid) {
                 ConfigurationService.setApiUrl(url);
                 $scope.url = ConfigurationService.getApiUrl();

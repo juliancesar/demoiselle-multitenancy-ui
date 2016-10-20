@@ -29,13 +29,16 @@
             </table>
         </div>
         <div class="col-md-6">
-            <form>
+            <form novalidate name="form">
                 <div class="form-group">
                     <label for="name">Nome do Tenant</label>
-                    <input type="text" required ng-model="name" class="form-control" id="name" placeholder="Nome">
-                    <p class="help-block">O nome não deve conter espaços e caracteres especiais.</p>
+                    <input type="text" pattern="^[A-Za-z]{1,}[A-Za-z0-9]{2,50}" required ng-model="name" class="form-control" id="name" name="name" placeholder="Nome">
+                    <div ng-show="form.$submitted || form.name.$touched" class="text-danger padding form-group">
+                        <span ng-show="form.name.$error.required">O campo do Nome do Tenant é obrigatório.</span>
+                        <span ng-show="form.name.$error.pattern">Forneça um Nome válido. Somente são aceitas letras e números sem espaços e deve conter no mínimo 3 caracteres e no máximo 50.</span>
+                    </div>
                 </div>
-                <button type="button" ng-click="create(name)" class="btn btn-success">Criar</button>
+                <button type="button" ng-click="create(form, name)" class="btn btn-success">Criar</button>
             </form>
         </div>
     </div>

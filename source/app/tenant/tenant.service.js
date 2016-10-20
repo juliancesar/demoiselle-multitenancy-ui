@@ -3,19 +3,23 @@ angular.module('dml')
 
         var services = [];
 
-        services.create = function(name) {
+        services.create = function (name) {
             return $http({
                 method: 'POST',
                 url: ConfigurationService.getApiUrl() + 'multiTenancy/createTenant/' + name
             });
         };
 
-        services.remove = function(tenant) {
+        services.remove = function (tenant) {
             var urlDelete = ConfigurationService.getApiUrl() + 'multiTenancy/deleteTenant/' + tenant.id;
             return $http({
-                url: urlDelete, 
-                method: 'DELETE'               
+                url: urlDelete,
+                method: 'DELETE'
             })
+        };
+
+        services.list = function () {
+            return $http.get(ConfigurationService.getApiUrl() + 'multiTenancy/list');
         };
 
         return services;
