@@ -44,8 +44,6 @@
   <script src="app/common/service/validation.service.js"></script>
   <!-- endinject -->
 
-
-
 </head>
 
 <body ng-app="dml">
@@ -60,7 +58,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="#">Demoiselle Multi Tenancy</a>
+        <a class="navbar-brand" href="#">Demoiselle Multitenancy</a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
@@ -72,10 +70,11 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#/tenant"> <i class="glyphicon glyphicon-globe"></i> {{selectedTenant.name}}</a></li>
+          <li>
+            <a href="#/tenant"> <i class="glyphicon glyphicon-globe"></i> {{selectedTenant.name}}</a>
+          </li>
         </ul>
       </div>
-      <!--/.nav-collapse -->
     </div>
   </nav>
 

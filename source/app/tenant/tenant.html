@@ -32,8 +32,7 @@
                                 class="btn btn-danger btn-xs">Excluir</button>
                         </td>
                         <td>
-                            <button uib-popover-template="'script-tpl.html'" " popover-class="script-popover " popover-placement="bottom
-                                " popover-title="Script Executado na Criação do Usuário "
+                            <button uib-popover-template="'script-tpl.html'" popover-class="script-popover " popover-placement="bottom" popover-title="Script Executado na Criação do Usuário"
                                 type="button " class="btn btn-default btn-xs ">Script</button>
                         </td>
                     </tr>
@@ -45,8 +44,7 @@
                 <div class="form-group ">
                     <label for="name ">Nome do Tenant</label>
                     <input type="text " pattern="^[A-Za-z]{1,}[A-Za-z0-9]{2,50} " required ng-model="tenant.name
-                                " class="form-control " id="name "
-                        name="name " placeholder="Nome ">
+                                " class="form-control " id="name " name="name " placeholder="Nome ">
                     <div ng-show="form.$submitted || form.name.$touched " class="text-danger padding form-group ">
                         <span ng-show="form.name.$error.required ">O campo do Nome do Tenant é obrigatório.</span>
                         <span ng-show="form.name.$error.pattern ">Forneça um Nome válido. Somente são aceitas letras e números sem espaços e deve conter no mínimo 3 caracteres e no máximo 50.</span>
@@ -56,15 +54,14 @@
                 <div class="form-group ">
                     <label for="name ">Script Executado na Criação do Usuário</label>
                     <textarea class="form-control " rows="10 " ng-model="tenant.scriptCreateUser " id="scriptCreateUser
-                                " name="scriptCreateUser "
-                        placeholder="Script "></textarea>
+                                " name="scriptCreateUser " placeholder="Script "></textarea>
 
                     <p class="help-block ">A variável do usuário é <b>user</b> e do tenant é <b>tenant</b>.</p>
                 </div>
 
-                <button type="button " ng-click="create(form, tenant) " class="btn btn-success ">Criar Tenant</button>
+                <button type="button" ng-click="create(form, tenant)" class="btn btn-success ">Criar Tenant</button>
 
-                <button type="button " ng-click="tenant.scriptCreateUser=script " class="btn btn-default ">Script Exemplo</button>
+                <button type="button" ng-click="tenant.scriptCreateUser=script" class="btn btn-default">Script Exemplo</button>
 
             </form>
         </div>

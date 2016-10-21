@@ -34,7 +34,7 @@ angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loadin
             verticalSpacing: 20,
             horizontalSpacing: 20,
             positionX: 'right',
-            positionY: 'top'
+            positionY: 'bottom'
         });
 
         // Interceptor
