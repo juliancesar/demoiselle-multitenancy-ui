@@ -39,10 +39,12 @@ angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loadin
 
         // Interceptor
         $httpProvider.interceptors.push('HttpInterceptorService');
-
+        
     })
 
     .run(function ($location, Notification, ConfigurationService, $rootScope, $urlRouter, $state) {
+
+        $rootScope.connectionError = false;
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
 
