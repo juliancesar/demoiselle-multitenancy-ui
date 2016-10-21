@@ -22,13 +22,15 @@ angular.module('dml')
         }
         
         $scope.ping = function() {
-            $http.get( ConfigurationService.getApiUrl() + "info/ping").then(function() {                
+            $http.get(ConfigurationService.getApiUrl() + "info/ping").then(function() {                
                 Notification.success({ message: 'API Acessível.' });
             }, function(error) {
-                console.log(error);
+                // console.log(error);
                 Notification.error({ message: 'A API não está acessíveo, verifique.' });
             });
         }
+        
+        $scope.ping();
 
         $scope.url = ConfigurationService.getApiUrl();
 
