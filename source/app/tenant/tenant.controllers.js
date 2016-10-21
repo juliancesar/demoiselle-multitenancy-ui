@@ -2,9 +2,9 @@ angular.module('dml')
     .controller('TenantController', function ($scope, $http, Notification, $rootScope, ConfigurationService, TenantService) {
         $scope.tenants = [];
         
-        $scope.tenant = {
-            scriptCreateUser : 'usuario.setNome(tenant.getName() + " - " + usuario.getNome());'
-        }
+        $scope.tenant = { };
+        
+        $scope.script = 'usuario.setNome(tenant.getName() + " - " + usuario.getNome());';
 
         $scope.refreshList = function () {
             TenantService.list().then(function (response) {
