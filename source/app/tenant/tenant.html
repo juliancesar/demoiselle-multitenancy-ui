@@ -18,11 +18,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="(key, value) in tenants">
+                    <tr ng-repeat="(key, value) in tenants" ng-class="{ 'success' : selectedTenant.id == value.id }">
                         <th scope="row">{{value.id}}</th>
                         <td>
                             {{value.name}}
-                            <span class="label label-info" ng-show="selectedTenant.id == value.id">Selecionado</span>
+                            <!--<span class="label label-info" ng-show="selectedTenant.id == value.id">Selecionado</span>-->
                         </td>
                         <td>
                             <button type="button" ng-click="select(value)" class="btn btn-warning btn-xs">Selecionar</button>
