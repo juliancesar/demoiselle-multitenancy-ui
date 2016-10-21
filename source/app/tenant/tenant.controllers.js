@@ -21,7 +21,7 @@ angular.module('dml')
 
             if (form.$valid) {
                 TenantService.create(tenant).then(function (response) {
-                    $scope.name = '';
+                    $scope.tenant = { };
                     $scope.refreshList();
 
                     form.$setPristine();
@@ -37,8 +37,7 @@ angular.module('dml')
         };
 
         $scope.deleteTenant = function (tenant) {
-            TenantService.remove(tenant).then(function (response) {
-                $scope.name = '';
+            TenantService.remove(tenant).then(function (response) {                
                 $scope.refreshList();
             }, function (response) {
                 Notification.error({ message: 'Verifique os dados e tente novamente' });
