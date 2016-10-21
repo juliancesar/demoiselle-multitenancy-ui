@@ -20,6 +20,15 @@ angular.module('dml')
             ConfigurationService.setApiUrl($scope.url);
             Notification.success({ message: 'URL da API Selecionada corretamente.' });
         }
+        
+        $scope.ping = function() {
+            $http.get( ConfigurationService.getApiUrl() + "info/ping").then(function() {                
+                alert("OK");
+            }, function(error) {
+                console.log(error);
+                alert("ERRO");
+            });
+        }
 
         $scope.url = ConfigurationService.getApiUrl();
 

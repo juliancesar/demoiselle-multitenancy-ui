@@ -19,7 +19,7 @@ angular.module('dml')
         };
 
         services.list = function () {
-            return $http.get(ConfigurationService.getApiUrl() + 'multiTenancy/list');
+            return $http.get(ConfigurationService.getApiUrl() + 'multiTenancy');
         };
 
         return services;
