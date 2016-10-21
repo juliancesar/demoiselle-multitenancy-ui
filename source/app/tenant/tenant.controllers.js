@@ -1,6 +1,10 @@
 angular.module('dml')
     .controller('TenantController', function ($scope, $http, Notification, $rootScope, ConfigurationService, TenantService) {
         $scope.tenants = [];
+        
+        $scope.tenant = {
+            scriptCreateUser : 'usuario.setNome(tenant.getName() + " - " + usuario.getNome());'
+        }
 
         $scope.refreshList = function () {
             TenantService.list().then(function (response) {
@@ -10,13 +14,13 @@ angular.module('dml')
             });
         };
 
-        $scope.create = function (form, name) {
+        $scope.create = function (form, tenant) {
 
             // Valida
             form.$setSubmitted();
 
             if (form.$valid) {
-                TenantService.create(name).then(function (response) {
+                TenantService.create(tenant).then(function (response) {
                     $scope.name = '';
                     $scope.refreshList();
 

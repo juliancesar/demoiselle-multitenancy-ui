@@ -3,10 +3,11 @@ angular.module('dml')
 
         var services = [];
 
-        services.create = function (name) {
+        services.create = function (tenant) {
             return $http({
                 method: 'POST',
-                url: ConfigurationService.getApiUrl() + 'multiTenancy/createTenant/' + name
+                url: ConfigurationService.getApiUrl() + 'multiTenancy/createTenant',
+                data: tenant
             });
         };
 
