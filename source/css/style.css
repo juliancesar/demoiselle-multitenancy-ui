@@ -11,6 +11,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 }
 .error-message {
   margin-top: 5px;
+  margin-left: 5px;
 }
 .script-popover {
   width: 400px;

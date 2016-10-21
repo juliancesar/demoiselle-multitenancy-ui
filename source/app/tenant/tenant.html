@@ -45,7 +45,7 @@
                     <label for="name">Nome do Tenant</label>
                     <input type="text" pattern="^[A-Za-z]{1,}[A-Za-z0-9]{2,50}" required ng-model="tenant.name" class="form-control" id="name"
                         name="name" placeholder="Nome">
-                    <div ng-show="form.$submitted || form.name.$touched" class="text-danger padding form-group">
+                    <div ng-show="form.$submitted || form.name.$touched" class="text-danger padding form-group error-message">
                         <span ng-show="form.name.$error.required">O campo do Nome do Tenant é obrigatório.</span>
                         <span ng-show="form.name.$error.pattern">Forneça um Nome válido. Somente são aceitas letras e números sem espaços e deve conter no mínimo 3 caracteres e no máximo 50.</span>
                     </div>
