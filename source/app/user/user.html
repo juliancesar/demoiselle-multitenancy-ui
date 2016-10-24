@@ -50,10 +50,11 @@
 
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input type="text" required ng-model="user.email" class="form-control" id="email" name="email" placeholder="E-mail">
+                    <input type="email" required ng-model="user.email" class="form-control" id="email" name="email" placeholder="E-mail">
 
                     <div ng-show="form.$submitted || form.email.$touched || form.email.$error.server" class="text-danger padding form error-message">
                         <p ng-show="form.email.$error.required">Este campo é obrigatório.</p>
+                        <p ng-show="form.email.$error.email">Informe um e-mail valido.</p>
                         <p ng-show="form.email.$error.server">{{form.email.$error.server}}</p>
                     </div>
                 </div>
