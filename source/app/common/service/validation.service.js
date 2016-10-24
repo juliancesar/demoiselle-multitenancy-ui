@@ -1,6 +1,6 @@
 angular.module('dml')
 
-    .factory('ValidationService', function ($http, $q) {
+    .factory('ValidationService', function ($http, $q, Notification) {
         var service = {};
 
         // Add all errors
@@ -10,13 +10,17 @@ angular.module('dml')
             service.clear(form);
 
             // Adiciona os erros
-            angular.forEach(errors, function (value, key) {
-                var splited = key.split("_");
-                key = splited[1];
+            angular.forEach(errors, function (value, key) {                
+                if (key == 'error') {
+                    Notification.error({ message: 'Erro no servidor: ' + value });
+                } else {                
+                    var splited = key.split("_");
+                    key = splited[1];
 
-                var aux = eval('$scope.' + form.$name + "." + key);
-                aux.$error.server = value;
-                aux.$valid = false;
+                    var aux = eval('$scope.' + form.$name + "." + key);
+                    aux.$error.server = value;
+                    aux.$valid = false;
+                }
             });
         };
 
