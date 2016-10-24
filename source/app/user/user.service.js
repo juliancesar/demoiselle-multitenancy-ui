@@ -26,7 +26,13 @@ angular.module('dml')
         services.list = function () {
             var tenant = ConfigurationService.getTenant();
             
-            return $http.get(ConfigurationService.getApiUrl() + tenant.name + '/usuario');
+            return $http.get(ConfigurationService.getApiUrl() + tenant.name + '/usuario/0/99');
+        };
+        
+        services.count = function () {
+            var tenant = ConfigurationService.getTenant();
+                        
+            return $http.get(ConfigurationService.getApiUrl() + tenant.name + '/usuario/count');
         };
 
         return services;
