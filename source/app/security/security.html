@@ -54,7 +54,7 @@
             </div>            
             <div class="row">
                 <b>Result</b>
-                <div>{{dateRequest}}</div>
+                <div class="padding bg-info">{{dateRequest | date : 'medium'}}</div>
                 <json-formatter json="resultRequest" open="2"></json-formatter>
             </div>
         </div>

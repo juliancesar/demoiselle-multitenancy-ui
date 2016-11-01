@@ -1,7 +1,7 @@
 angular.module('dml')
     .controller('UserController', function ($scope, $http, Notification, $rootScope, ConfigurationService, $state, UserService, ValidationService) {
 
-        $scope.user = { perfil: "Administrador" };
+        $scope.user = { perfil: "ADMINISTRATOR" };
         $scope.tenant = ConfigurationService.getTenant();
 
         $scope.refreshList = function () {

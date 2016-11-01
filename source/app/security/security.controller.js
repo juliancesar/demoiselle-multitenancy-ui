@@ -16,12 +16,16 @@ angular.module('dml')
 
                 // Faz o login da aplicação
                 SecurityService.login($scope.credentials.username, $scope.credentials.password).then(function (response) {
-                    console.log(response.data);
+                    var token = response.data.token;
+                    
+                    // console.log(token);                    
+                    // console.log(response.data);
+                    
                     // Adiciona em todos os headers
-                    $http.defaults.headers.common['Authorization'] = 'Token ' + response.data;
+                    $http.defaults.headers.common['Authorization'] = 'Token ' + token;
 
                     // $scope.token = response.data;
-                    var token = response.data;
+                    
                     var decoded = jwt_decode(token);                    
                     $scope.token = decoded;
 
