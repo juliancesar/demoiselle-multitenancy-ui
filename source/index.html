@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="lib/angular-loading-bar/build/loading-bar.css" />
   <link rel="stylesheet" href="lib/angular-ui-notification/dist/angular-ui-notification.css" />
+  <link rel="stylesheet" href="lib/json-formatter/dist/json-formatter.css" />
   <!-- endbower -->
 
   <!-- bower:js -->
@@ -23,6 +24,8 @@
   <script src="lib/ngstorage/ngStorage.js"></script>
   <script src="lib/angular-loading-bar/build/loading-bar.js"></script>
   <script src="lib/angular-ui-notification/dist/angular-ui-notification.js"></script>
+  <script src="lib/jwt-decode/build/jwt-decode.js"></script>
+  <script src="lib/json-formatter/dist/json-formatter.js"></script>
   <!-- endbower -->
 
   <!-- inject:css -->
@@ -32,6 +35,8 @@
 
   <!-- inject:js -->
   <script src="app/app.js"></script>
+  <script src="app/security/security.controller.js"></script>
+  <script src="app/security/security.service.js"></script>
   <script src="app/server/server.controller.js"></script>
   <script src="app/tenant/tenant.controllers.js"></script>
   <script src="app/tenant/tenant.service.js"></script>
@@ -66,6 +71,7 @@
           <li ng-class="getClass('/server')"><a href="#/server">Server</a></li>
           <li ng-class="getClass('/tenant')"><a href="#/tenant">Tenants</a></li>
           <li ng-class="getClass('/user')"><a href="#/user">Users</a></li>
+          <li ng-class="getClass('/security')"><a href="#/security">Security</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

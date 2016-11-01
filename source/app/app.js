@@ -1,4 +1,4 @@
-angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loading-bar', 'ui-notification'])
+angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loading-bar', 'ui-notification', 'jsonFormatter'])
 
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $localStorageProvider, NotificationProvider) {
 
@@ -21,6 +21,11 @@ angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loadin
                 url: '/user',
                 templateUrl: 'app/user/user.html',
                 controller: 'UserController'
+            })
+            .state('security', {
+                url: '/security',
+                templateUrl: 'app/security/security.html',
+                controller: 'SecurityController'
             });
 
         $urlRouterProvider.otherwise('/home');
@@ -39,7 +44,7 @@ angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loadin
 
         // Interceptor
         $httpProvider.interceptors.push('HttpInterceptorService');
-        
+
     })
 
     .run(function ($location, Notification, ConfigurationService, $rootScope, $urlRouter, $state) {
@@ -54,7 +59,7 @@ angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loadin
                 event.preventDefault();
                 $state.go('server');
             } else {
-                
+
                 // Verifica se existe um TENANT
                 var tenant = ConfigurationService.getTenant();
                 if ((toState.url != '/server' && toState.url != '/home' && toState.url != '/tenant') && (tenant == undefined || tenant == "")) {
@@ -62,7 +67,7 @@ angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loadin
                     Notification.error({ message: 'Selecione um Tenant' });
                     $state.go("tenant");
                 }
-                
+
             }
 
         });

@@ -1,0 +1,62 @@
+<div class="content">
+    <div class="row">
+        <h1>Security</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="row">
+                <h3>Acesso ao Sistema</h3>
+            </div>
+            <div class="row">
+                <form novalidate name="form">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="E-mail" ng-model="credentials.username">
+
+                        <div ng-show="form.$submitted || form.email.$touched || form.email.$error.server" class="text-danger padding form error-message">
+                            <p ng-show="form.email.$error.required">Este campo é obrigatório.</p>
+                            <p ng-show="form.email.$error.email">Informe um e-mail valido.</p>
+                            <p ng-show="form.email.$error.server">{{form.email.$error.server}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="senha" placeholder="Password" ng-model="credentials.password">
+
+                        <div ng-show="form.$submitted || form.senha.$touched || form.senha.$error.server" class="text-danger padding form error-message">
+                            <p ng-show="form.senha.$error.required">Este campo é obrigatório.</p>
+                            <p ng-show="form.senha.$error.server">{{form.senha.$error.server}}</p>
+                        </div>
+                    </div>
+                    <button type="submit" ng-click="login(form)" class="btn btn-primary btn-block">Entrar</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="row">
+                <h3>Token Carregado</h3>
+            </div>
+            <div class="row">
+                <json-formatter json="token" open="3"></json-formatter>
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+            <div class="row">
+                <h3>Testes da API</h3>
+            </div>
+            <div class="row">
+                <div class="list-group">
+                    <button type="button" class="list-group-item" ng-click="testRequest('sem')">Teste SEM segurança</button>
+                    <button type="button" class="list-group-item" ng-click="testRequest('com')">Teste COM segurança</button>
+                    <button type="button" class="list-group-item" ng-click="testRequest('role/administrator')">Teste ROLE Administrator</button>
+                    <button type="button" class="list-group-item" ng-click="testRequest('role/usuario')">Teste ROLE Usuário</button>
+                    <button type="button" class="list-group-item" ng-click="testRequest('permission/categoria/consultar')">Teste RESOURCE Categoria OPERATION Consultar</button>
+                    <button type="button" class="list-group-item" ng-click="testRequest('permission/produto/incluir')">Teste RESOURCE Produto OPERATION Incluir</button>
+                </div>
+            </div>            
+            <div class="row">
+                <b>Result</b>
+                <div>{{dateRequest}}</div>
+                <json-formatter json="resultRequest" open="2"></json-formatter>
+            </div>
+        </div>
+    </div>
+</div>
