@@ -4,6 +4,8 @@ angular.module('dml')
 
         $scope.credentials = {};
         $scope.token = "Token JWT não carregado!";
+        $scope.resultRequest = {};
+        $scope.dateRequest = new Date();
 
         $scope.login = function (form) {
 
