@@ -27,6 +27,9 @@ angular.module('dml')
 
                     Notification.success({ message: 'Usuário cadastrado com sucesso.' });
                 }, function (response) {
+                    $http.defaults.headers.common['Authorization'] = '';
+                    $scope.token = '';
+                    
                     ValidationService.addAll($scope, response.data, form);
                 });
 
