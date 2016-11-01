@@ -2,8 +2,6 @@ angular.module('dml')
     .controller('SecurityController', function ($scope, $http, Notification, $rootScope, ConfigurationService, ValidationService, SecurityService) {
         $scope.tenant = ConfigurationService.getTenant();
 
-        console.log("OK");
-
         $scope.credentials = {};
         $scope.token = "Token JWT não carregado!";
 
