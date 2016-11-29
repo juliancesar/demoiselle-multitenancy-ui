@@ -16,7 +16,7 @@
                 <tbody>
                     <tr ng-repeat="(key, value) in list">
                         <th scope="row">{{value.id}}</th>
-                        <td>{{value.nome}}</td>
+                        <td>{{value.name}}</td>
                         <td>{{value.email}}</td>
                         <td>
                             <button type="button" confirm-click="deleteUser(value)" confirm-click-message="Você tem certeza que deseja excluir o usuário?"
@@ -29,22 +29,22 @@
         <div class="col-md-5">
             <form novalidate name="form">
                 <div class="form-group">
-                    <label for="perfil">Perfil</label>
-                    <input type="text" required ng-model="user.perfil" class="form-control" id="perfil" name="perfil" placeholder="Perfil">
+                    <label for="role">Perfil</label>
+                    <input type="text" required ng-model="user.role" class="form-control" id="role" name="role" placeholder="Perfil">
 
-                    <div ng-show="form.$submitted || form.perfil.$touched || form.perfil.$error.server" class="text-danger padding form error-message">
-                        <p ng-show="form.perfil.$error.required">Este campo é obrigatório.</p>
-                        <p ng-show="form.perfil.$error.server">{{form.nome.$error.server}}</p>
+                    <div ng-show="form.$submitted || form.role.$touched || form.role.$error.server" class="text-danger padding form error-message">
+                        <p ng-show="form.role.$error.required">Este campo é obrigatório.</p>
+                        <p ng-show="form.role.$error.server">{{form.name.$error.server}}</p>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="nome">Nome do Usuário</label>
-                    <input type="text" ng-model="user.nome" class="form-control" id="nome" name="nome" placeholder="Nome">
+                    <label for="name">Nome do Usuário</label>
+                    <input type="text" ng-model="user.name" class="form-control" id="name" name="name" placeholder="Nome">
 
-                    <div ng-show="form.$submitted || form.nome.$touched || form.nome.$error.server" class="text-danger padding form error-message">
-                        <p ng-show="form.nome.$error.required">Este campo é obrigatório.</p>
-                        <p ng-show="form.nome.$error.server">{{form.nome.$error.server}}</p>
+                    <div ng-show="form.$submitted || form.name.$touched || form.name.$error.server" class="text-danger padding form error-message">
+                        <p ng-show="form.name.$error.required">Este campo é obrigatório.</p>
+                        <p ng-show="form.name.$error.server">{{form.name.$error.server}}</p>
                     </div>
                 </div>
 
@@ -80,12 +80,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="senha">Senha</label>
-                    <input type="password" required ng-model="user.senha" class="form-control" id="senha" name="senha" placeholder="Senha">
+                    <label for="password">Senha</label>
+                    <input type="password" required ng-model="user.password" class="form-control" id="password" name="password" placeholder="Senha">
 
-                    <div ng-show="form.$submitted || form.senha.$touched || form.senha.$error.server" class="text-danger padding form error-message">
-                        <p ng-show="form.senha.$error.required">Este campo é obrigatório.</p>
-                        <p ng-show="form.senha.$error.server">{{form.senha.$error.server}}</p>
+                    <div ng-show="form.$submitted || form.password.$touched || form.password.$error.server" class="text-danger padding form error-message">
+                        <p ng-show="form.password.$error.required">Este campo é obrigatório.</p>
+                        <p ng-show="form.password.$error.server">{{form.password.$error.server}}</p>
                     </div>
                 </div>
 

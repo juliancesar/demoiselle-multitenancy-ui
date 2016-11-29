@@ -1,14 +1,26 @@
 angular.module('dml')
     .controller('TenantController', function ($scope, $http, Notification, $rootScope, ConfigurationService, TenantService) {
         $scope.tenants = [];
-        
-        $scope.tenant = { };
-        
-        $scope.script = 'usuario.setNome(tenant.getName() + " - " + usuario.getNome());';
+
+        $scope.tenant = {};
+
+        $scope.script = 'usuario.setName(tenant.getName() + " - " + usuario.getName());';
 
         $scope.refreshList = function () {
             TenantService.list().then(function (response) {
-                $scope.tenants = response.data;
+
+                var finalList = [];
+
+                angular.forEach(response.data.content, function (t, key) {
+                    if (t.configuration)
+                        t.configuration = JSON.parse(t.configuration);
+                    this.push(t);
+                    
+                    console.log(t);
+                    
+                }, finalList);
+
+                $scope.tenants = finalList;
             }, function (response) {
                 console.log(response);
             });
@@ -19,9 +31,14 @@ angular.module('dml')
             // Valida
             form.$setSubmitted();
 
+            var configurationJson = { createUserScript: tenant.createUserScript };
+            var finalTenant = { name: tenant.name, configuration: JSON.stringify(configurationJson) };
+
+            console.log(finalTenant);
+
             if (form.$valid) {
-                TenantService.create(tenant).then(function (response) {
-                    $scope.tenant = { };
+                TenantService.create(finalTenant).then(function (response) {
+                    $scope.tenant = {};
                     $scope.refreshList();
 
                     form.$setPristine();
@@ -37,7 +54,7 @@ angular.module('dml')
         };
 
         $scope.deleteTenant = function (tenant) {
-            TenantService.remove(tenant).then(function (response) {                
+            TenantService.remove(tenant).then(function (response) {
                 $scope.refreshList();
             }, function (response) {
                 Notification.error({ message: 'Verifique os dados e tente novamente' });

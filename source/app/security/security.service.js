@@ -8,7 +8,7 @@ angular.module('dml')
 
             return $http({
                 method: 'POST',
-                url: ConfigurationService.getApiUrl() + tenant.name + '/security/login',
+                url: ConfigurationService.getApiUrl() + tenant.name + '/auth/login',
                 data: {
                     "username": username,
                     "password": password

@@ -29,7 +29,7 @@ angular.module('dml')
                     var decoded = jwt_decode(token);                    
                     $scope.token = decoded;
 
-                    Notification.success({ message: 'Usuário cadastrado com sucesso.' });
+                    Notification.success({ message: 'Usuário Logado com sucesso.' });
                 }, function (response) {
                     $http.defaults.headers.common['Authorization'] = '';
                     $scope.token = 'Erro';
@@ -48,7 +48,7 @@ angular.module('dml')
 
             $http({
                 method: 'GET',
-                url: ConfigurationService.getApiUrl() + tenant.name + '/security/' + url                
+                url: ConfigurationService.getApiUrl() + tenant.name + '/testRoleAndPermission/' + url                
             }).then(function(response) {
                  console.log(response.data);                 
                  $scope.resultRequest = response.data; 

@@ -1,13 +1,13 @@
 angular.module('dml')
     .controller('UserController', function ($scope, $http, Notification, $rootScope, ConfigurationService, $state, UserService, ValidationService) {
 
-        $scope.user = { perfil: "ADMINISTRATOR" };
+        $scope.user = { role: "ADMINISTRATOR" };
         $scope.tenant = ConfigurationService.getTenant();
 
         $scope.refreshList = function () {
             UserService.list().then(function (response) {
-                $scope.list = response.data;
-                $scope.total = $scope.list.length;
+                $scope.list = response.data.content;
+                $scope.total = $scope.list.content.length;
             }, function (response) {
                 Notification.error({ message: 'Ocorreu um erro na listagem, tente novamente.' });
             });
@@ -42,7 +42,7 @@ angular.module('dml')
         $scope.resetForm = function (form) {
             ValidationService.clear(form);
 
-            $scope.user = { perfil: "Administrador" };
+            $scope.user = { role: "ADMINISTRATOR" };
 
             form.$setPristine();
             form.$setUntouched();

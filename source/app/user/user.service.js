@@ -8,7 +8,7 @@ angular.module('dml')
             
             return $http({
                 method: 'POST',
-                url: ConfigurationService.getApiUrl() + tenant.name + '/usuario',
+                url: ConfigurationService.getApiUrl() + tenant.name + '/user',
                 data: user                
             });
         };
@@ -16,7 +16,7 @@ angular.module('dml')
         services.remove = function(user) {
             var tenant = ConfigurationService.getTenant();
             
-            var urlDelete = ConfigurationService.getApiUrl() + tenant.name + '/usuario/' + user.id;
+            var urlDelete = ConfigurationService.getApiUrl() + tenant.name + '/user/' + user.id;
             return $http({
                 url: urlDelete, 
                 method: 'DELETE'               
@@ -26,13 +26,13 @@ angular.module('dml')
         services.list = function () {
             var tenant = ConfigurationService.getTenant();
             
-            return $http.get(ConfigurationService.getApiUrl() + tenant.name + '/usuario/0/99');
+            return $http.get(ConfigurationService.getApiUrl() + tenant.name + '/user');
         };
         
         services.count = function () {
             var tenant = ConfigurationService.getTenant();
                         
-            return $http.get(ConfigurationService.getApiUrl() + tenant.name + '/usuario/count');
+            return $http.get(ConfigurationService.getApiUrl() + tenant.name + '/user/count');
         };
 
         return services;

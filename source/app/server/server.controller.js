@@ -16,7 +16,7 @@ angular.module('dml')
         };
 
         $scope.setApiUrlLocalhost = function () {
-            $scope.url = 'http://localhost:8080/app/api/';
+            $scope.url = 'http://localhost:8080/user/api/';
             ConfigurationService.setApiUrl($scope.url);
             Notification.success({ message: 'URL da API Selecionada corretamente.' });
         }
