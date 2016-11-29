@@ -34,7 +34,7 @@ angular.module('dml')
             var configurationJson = { createUserScript: tenant.createUserScript };
             var finalTenant = { name: tenant.name, configuration: JSON.stringify(configurationJson) };
 
-            console.log(finalTenant);
+            // console.log(finalTenant);
 
             if (form.$valid) {
                 TenantService.create(finalTenant).then(function (response) {
