@@ -1,6 +1,6 @@
 <div class="content">
     <div class="row text-center">
-        <h1>Server</h1>
+        <h1>Server URL</h1>
     </div>
     <div class="row">
         <div class="col-md-offset-3 col-md-6 text-center">
@@ -20,6 +20,17 @@
 
                 <div class="bg-info message-box box-padding">Atention: All services have to be in the same server to work with this UI.</div>
             </form>
+        </div>
+    </div>
+
+    <div class="row box-padding message-box">
+        <div class="col-md-offset-3 col-md-6 text-center">
+
+            <h4>API URLs</h4> 
+
+            <ul class="list-group">
+                <li ng-repeat="url in urls" class="list-group-item">{{url}}</li>
+            </ul>
         </div>
     </div>
 </div>

@@ -2,12 +2,10 @@ angular.module('dml')
     .service('TenantService', function($http, ConfigurationService) {
 
         var tenantTypes = [
-            { "name": "user" },
-            { "name": "product" },
-            // { "name": "sale" }
+            { "name": "user", "apiUrl": "user/api/" },
+            { "name": "product", "apiUrl": "product/api/" },
+            // { "name": "sale", "apiUrl" : "sale/api/" }
         ];
-
-        var apiDefaultPrefix = 'api';
 
         var services = [];
 
@@ -22,29 +20,54 @@ angular.module('dml')
         services.getApiUrlToTenantTypes = function() {
             var ar = [];
             angular.forEach(tenantTypes, function(value, key) {
-                this.push(ConfigurationService.getServerUrl() + value.name + "/" + apiDefaultPrefix + "/");
+                this.push(ConfigurationService.getServerUrl() + value.apiUrl);
             }, ar);
             return ar;
         };
 
+        services.getUrlForTenantType = function(t) {
+            for (i in tenantTypes) {
+                if (tenantTypes[i].name == t)
+                    return ConfigurationService.getServerUrl() + tenantTypes[i].apiUrl;
+            }
+            return null;
+        };
+
         services.create = function(tenant) {
-            return $http({
-                method: 'POST',
-                url: ConfigurationService.getApiUrl() + 'tenant',
-                data: tenant
-            });
+            // Tem que criar em todas as URLs
+            var urlsApi = services.getApiUrlToTenantTypes();
+            var promisses = [];
+
+            for (i in urlsApi) {
+                promisses.push($http({
+                    method: 'POST',
+                    url: urlsApi[i] + 'tenant',
+                    data: tenant
+                }));
+            }
+
+            return promisses;
         };
 
         services.remove = function(tenant) {
-            var urlDelete = ConfigurationService.getApiUrl() + 'tenant/' + tenant.id;
-            return $http({
-                url: urlDelete,
-                method: 'DELETE'
-            })
+            // Tem que criar em todas as URLs
+            var urlsApi = services.getApiUrlToTenantTypes();
+            var promisses = [];
+
+            for (i in urlsApi) {
+                var urlDelete = urlsApi[i] + 'tenant/' + tenant.id;
+                promisses.push($http({
+                    url: urlDelete,
+                    method: 'DELETE'
+                }));
+            }
+
+            return promisses;
         };
 
         services.list = function() {
-            return $http.get(ConfigurationService.getApiUrl() + 'tenant');
+            var urls = services.getApiUrlToTenantTypes();
+            return $http.get(urls[0] + 'tenant');
         };
 
         return services;

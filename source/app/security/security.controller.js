@@ -1,5 +1,5 @@
 angular.module('dml')
-    .controller('SecurityController', function ($scope, $http, Notification, $rootScope, ConfigurationService, ValidationService, SecurityService) {
+    .controller('SecurityController', function ($scope, $http, Notification, TenantService, $rootScope, ConfigurationService, ValidationService, SecurityService) {
         $scope.tenant = ConfigurationService.getTenant();
 
         $scope.credentials = {};
@@ -48,7 +48,7 @@ angular.module('dml')
 
             $http({
                 method: 'GET',
-                url: ConfigurationService.getApiUrl() + tenant.name + '/testRoleAndPermission/' + url                
+                url: TenantService.getUrlForTenantType('user') + tenant.name + '/testRoleAndPermission/' + url                
             }).then(function(response) {
                  console.log(response.data);                 
                  $scope.resultRequest = response.data; 

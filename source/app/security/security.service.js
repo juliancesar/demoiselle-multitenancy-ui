@@ -1,5 +1,5 @@
 angular.module('dml')
-    .service('SecurityService', function ($http, ConfigurationService) {
+    .service('SecurityService', function ($http, ConfigurationService, TenantService) {
 
         var services = [];
 
@@ -8,7 +8,7 @@ angular.module('dml')
 
             return $http({
                 method: 'POST',
-                url: ConfigurationService.getApiUrl() + tenant.name + '/auth/login',
+                url: TenantService.getUrlForTenantType('user') + tenant.name + '/auth/login',
                 data: {
                     "username": username,
                     "password": password

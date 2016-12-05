@@ -1,5 +1,5 @@
 angular.module('dml')
-    .controller('TenantController', function ($scope, $http, Notification, $rootScope, ConfigurationService, TenantService) {
+    .controller('TenantController', function ($scope, $http, Notification, $rootScope, ConfigurationService, TenantService, $q) {
         $scope.tenants = [];
 
         $scope.tenant = {};
@@ -15,9 +15,6 @@ angular.module('dml')
                     if (t.configuration)
                         t.configuration = JSON.parse(t.configuration);
                     this.push(t);
-                    
-                    console.log(t);
-                    
                 }, finalList);
 
                 $scope.tenants = finalList;
@@ -37,7 +34,9 @@ angular.module('dml')
             // console.log(finalTenant);
 
             if (form.$valid) {
-                TenantService.create(finalTenant).then(function (response) {
+                var promisses = TenantService.create(finalTenant);
+                
+                $q.all(promisses).then(function (response) {
                     $scope.tenant = {};
                     $scope.refreshList();
 
@@ -54,7 +53,9 @@ angular.module('dml')
         };
 
         $scope.deleteTenant = function (tenant) {
-            TenantService.remove(tenant).then(function (response) {
+            var promisses = TenantService.remove(tenant)
+            
+            $q.all(promisses).then(function (response) {
                 $scope.refreshList();
             }, function (response) {
                 Notification.error({ message: 'Verifique os dados e tente novamente' });

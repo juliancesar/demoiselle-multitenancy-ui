@@ -1,14 +1,16 @@
 angular.module('dml')
-    .service('UserService', function ($http, ConfigurationService) {
+    .service('UserService', function ($http, ConfigurationService, TenantService) {
 
         var services = [];
+
+        console.log(TenantService.getUrlForTenantType('user'));
 
         services.create = function(user) {            
             var tenant = ConfigurationService.getTenant();
             
             return $http({
                 method: 'POST',
-                url: ConfigurationService.getApiUrl() + tenant.name + '/user',
+                url: TenantService.getUrlForTenantType('user') + tenant.name + '/user',
                 data: user                
             });
         };
@@ -26,13 +28,13 @@ angular.module('dml')
         services.list = function () {
             var tenant = ConfigurationService.getTenant();
             
-            return $http.get(ConfigurationService.getApiUrl() + tenant.name + '/user');
+            return $http.get(TenantService.getUrlForTenantType('user') + tenant.name + '/user');
         };
         
         services.count = function () {
             var tenant = ConfigurationService.getTenant();
                         
-            return $http.get(ConfigurationService.getApiUrl() + tenant.name + '/user/count');
+            return $http.get(TenantService.getUrlForTenantType('user') + tenant.name + '/user/count');
         };
 
         return services;

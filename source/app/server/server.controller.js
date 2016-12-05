@@ -1,6 +1,8 @@
 angular.module('dml')
     .controller('ServerController', function ($scope, $http, Notification, $rootScope, ConfigurationService, TenantService, $q) {
 
+        $scope.urls = TenantService.getApiUrlToTenantTypes();
+
         $scope.setServerUrl = function (form, url) {
 
             // Valida
@@ -22,12 +24,10 @@ angular.module('dml')
         }
 
         $scope.ping = function () {
-
-            var urls = TenantService.getApiUrlToTenantTypes();
             var promisses = [];
 
-            for (var i in urls) {
-                var urlFinal = urls[i];
+            for (var i in $scope.urls) {
+                var urlFinal = $scope.urls[i];
                 promisses.push($http.get(urlFinal + "info/ping"));
             }
 
