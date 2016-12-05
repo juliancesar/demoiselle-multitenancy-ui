@@ -1,37 +1,46 @@
 angular.module('dml')
-    .controller('ServerController', function ($scope, $http, Notification, $rootScope, ConfigurationService) {
+    .controller('ServerController', function ($scope, $http, Notification, $rootScope, ConfigurationService, TenantService, $q) {
 
-        $scope.setApiUrl = function (form, url) {
-            
+        $scope.setServerUrl = function (form, url) {
+
             // Valida
             form.$setSubmitted();
-            
+
             if (form.$valid) {
-                ConfigurationService.setApiUrl(url);
-                $scope.url = ConfigurationService.getApiUrl();
+                ConfigurationService.setServerUrl(url);
+                $scope.url = ConfigurationService.getServerUrl();
                 Notification.success({ message: 'URL da API Selecionada corretamente.' });
             } else {
                 console.log("Formulário não é valido.");
             }
         };
 
-        $scope.setApiUrlLocalhost = function () {
-            $scope.url = 'http://localhost:8080/user/api/';
-            ConfigurationService.setApiUrl($scope.url);
+        $scope.setServerUrlLocalhost = function () {
+            $scope.url = 'http://localhost:8080/';
+            ConfigurationService.setServerUrl($scope.url);
             Notification.success({ message: 'URL da API Selecionada corretamente.' });
         }
-        
-        $scope.ping = function() {
-            $http.get(ConfigurationService.getApiUrl() + "info/ping").then(function() {                
-                Notification.success({ message: 'API Acessível.' });
-            }, function(error) {
-                // console.log(error);
-                Notification.error({ message: 'A API não está acessíveo, verifique.' });
+
+        $scope.ping = function () {
+
+            var urls = TenantService.getApiUrlToTenantTypes();
+            var promisses = [];
+
+            for (var i in urls) {
+                var urlFinal = urls[i];
+                promisses.push($http.get(urlFinal + "info/ping"));
+            }
+
+            $q.all(promisses).then(function () {
+                Notification.success({ message: 'APIs acessíveis.' });
+            }, function (error) {
+                Notification.error({ message: 'Uma ou mais APIs não estão acessíveis, verifique a API ' + error.config.url });
             });
+
         }
-        
+
         $scope.ping();
 
-        $scope.url = ConfigurationService.getApiUrl();
+        $scope.url = ConfigurationService.getServerUrl();
 
     });

@@ -3,14 +3,14 @@ angular.module('dml')
 
         var services = [];
 
-        services.getApiUrl = function () {
-            return $localStorage.apiUrl;
+        services.getServerUrl = function () {
+            return $localStorage.serverUrl;
         };
 
-        services.setApiUrl = function (url) {
+        services.setServerUrl = function (url) {
             if (url.slice(-1) != '/')
                 url = url + '/';
-            $localStorage.apiUrl = url;
+            $localStorage.serverUrl = url;
         };
 
         services.getTenant = function () {

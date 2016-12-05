@@ -54,8 +54,8 @@ angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loadin
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
 
             // Verifica se existe URL
-            var apiUrl = ConfigurationService.getApiUrl();
-            if ((toState.url != '/server' && toState.url != '/home') && (apiUrl == undefined || apiUrl == '')) {
+            var serverUrl = ConfigurationService.getServerUrl();
+            if ((toState.url != '/server' && toState.url != '/home') && (serverUrl == undefined || serverUrl == '')) {
                 event.preventDefault();
                 $state.go('server');
             } else {
@@ -71,7 +71,5 @@ angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loadin
             }
 
         });
-
-
 
     });
