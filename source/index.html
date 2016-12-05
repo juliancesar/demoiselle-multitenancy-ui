@@ -35,6 +35,8 @@
 
   <!-- inject:js -->
   <script src="app/app.js"></script>
+  <script src="app/product/product.controller.js"></script>
+  <script src="app/product/product.service.js"></script>
   <script src="app/security/security.controller.js"></script>
   <script src="app/security/security.service.js"></script>
   <script src="app/server/server.controller.js"></script>
@@ -72,6 +74,8 @@
           <li ng-class="getClass('/tenant')"><a href="#/tenant">Tenants</a></li>
           <li ng-class="getClass('/user')"><a href="#/user">Users</a></li>
           <li ng-class="getClass('/security')"><a href="#/security">Security</a></li>
+
+          <li ng-class="getClass('/product')"><a href="#/product">Products</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

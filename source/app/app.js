@@ -22,6 +22,11 @@ angular.module('dml', ['ui.bootstrap', 'ui.router', 'ngStorage', 'angular-loadin
                 templateUrl: 'app/user/user.html',
                 controller: 'UserController'
             })
+             .state('product', {
+                url: '/product',
+                templateUrl: 'app/product/product.html',
+                controller: 'ProductController'
+            })
             .state('security', {
                 url: '/security',
                 templateUrl: 'app/security/security.html',
