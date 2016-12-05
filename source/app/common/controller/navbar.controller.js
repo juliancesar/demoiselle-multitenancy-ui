@@ -7,6 +7,11 @@ angular.module('dml')
         $scope.$on('change-tenant', function (event, tenant) {
             ConfigurationService.setTenant(tenant);
             $scope.selectedTenant = ConfigurationService.getTenant();
+            
+            // Se o tenant é null manda para o home
+            if (tenant == null) {
+                $location.path('/home')
+            }
         });
 
         $scope.getClass = function (path) {

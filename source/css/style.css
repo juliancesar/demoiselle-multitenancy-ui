@@ -28,3 +28,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 .margin-top {
   margin-top: 15px;
 }
+
+select.form-control:not([size]):not([multiple]) {
+  height: auto !important;
+}

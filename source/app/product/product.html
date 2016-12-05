@@ -50,8 +50,25 @@
                     <legend>Create Product:</legend>
                     <form novalidate name="form">
                         <div class="form-group">
+                            <label for="category">Category</label>
+
+                            <select ng-model="product.category" required class="form-control" id="category" name="category">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+
+                            <div ng-show="form.$submitted || form.category.$touched || form.description.$error.server" class="text-danger padding form error-message">
+                                <p ng-show="form.category.$error.required">Este campo é obrigatório.</p>
+                                <p ng-show="form.category.$error.server">{{form.name.$error.server}}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="description">Description</label>
-                            <input type="text" required ng-model="product.description" class="form-control" id="description" name="description" placeholder="Perfil">
+                            <input type="text" required ng-model="product.description" class="form-control" id="description" name="description" placeholder="Description">
 
                             <div ng-show="form.$submitted || form.description.$touched || form.description.$error.server" class="text-danger padding form error-message">
                                 <p ng-show="form.description.$error.required">Este campo é obrigatório.</p>
@@ -61,7 +78,7 @@
 
                         <div class="form-group">
                             <label for="quantity">Quantity</label>
-                            <input type="text" ng-model="product.quantity" class="form-control" id="quantity" name="quantity" placeholder="Nome">
+                            <input type="text" ng-model="product.quantity" class="form-control" id="quantity" name="quantity" placeholder="Quantity">
 
                             <div ng-show="form.$submitted || form.quantity.$touched || form.quantity.$error.server" class="text-danger padding form error-message">
                                 <p ng-show="form.quantity.$error.required">Este campo é obrigatório.</p>
@@ -71,7 +88,7 @@
 
                         <div class="form-group">
                             <label for="cost">Cost</label>
-                            <input type="text" ng-model="product.cost" class="form-control" id="cost" name="cost" placeholder="Nome">
+                            <input type="text" ng-model="product.cost" class="form-control" id="cost" name="cost" placeholder="Cost">
 
                             <div ng-show="form.$submitted || form.cost.$touched || form.cost.$error.server" class="text-danger padding form error-message">
                                 <p ng-show="form.cost.$error.required">Este campo é obrigatório.</p>
