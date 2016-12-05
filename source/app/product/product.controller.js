@@ -1,5 +1,5 @@
 angular.module('dml')
-    .controller('ProductController', function ($scope, $http, Notification, $rootScope, ConfigurationService, $state, ProductService, ValidationService) {
+    .controller('ProductController', function ($scope, $http, Notification, $rootScope, ConfigurationService, CategoryService, ProductService, ValidationService) {
 
         $scope.product = { role: "ADMINISTRATOR" };
         $scope.tenant = ConfigurationService.getTenant();
@@ -30,8 +30,8 @@ angular.module('dml')
                 console.log("Dados do formulário inválidos.");
             }
         };
-        
-         $scope.deleteProduct = function (product) {
+
+        $scope.deleteProduct = function (product) {
             ProductService.remove(product).then(function (response) {
                 $scope.refreshList();
             }, function (response) {
@@ -49,5 +49,37 @@ angular.module('dml')
         };
 
         $scope.refreshList();
+
+
+        // Category
+
+        $scope.createCategory = function (formCategory) {
+            // Valida
+            formCategory.$setSubmitted();
+
+            if (formCategory.$valid) {
+                CategoryService.create($scope.category).then(function () {
+                    $scope.refreshList();
+                    $scope.resetForm(formCategory);
+
+                    Notification.success({ message: 'Category successfully registered.' });
+                }, function (response) {
+                    ValidationService.addAll($scope, response.data, formCategory);
+                });
+            } else {
+                console.log("Dados do formulário inválidos.");
+            }
+        };
+
+        $scope.refreshListCategory = function () {
+            CategoryService.list().then(function (response) {
+                $scope.listCategory = response.data.content;
+                $scope.totalCategory = response.data.total;
+            }, function (response) {
+                Notification.error({ message: 'Ocorreu um erro na listagem, tente novamente.' });
+            });
+        };
+
+        $scope.refreshListCategory();
 
     });

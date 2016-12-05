@@ -1,51 +1,84 @@
 <div class="content">
     <div class="row">
-        <h1>Products [{{tenant.name}}] - Total: <b>{{total}}</b></h1>
+        <h1>Products [{{tenant.name}}]</b></h1>
     </div>
     <div class="row">
         <div class="col-md-7">
-            <table class="table table-condensed">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th width="50%">Nome</th>
-                        <th width="50%">E-mail</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="(key, value) in list">
-                        <th scope="row">{{value.id}}</th>
-                        <td>{{value.name}}</td>
-                        <td>{{value.email}}</td>
-                        <td>
-                            <button type="button" confirm-click="deleteUser(value)" confirm-click-message="Você tem certeza que deseja excluir o usuário?"
-                                class="btn btn-danger btn-xs">Excluir</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-md-5">
-            <div class="row">
-                <fieldset>
-                    <legend>Create Category:</legend>
-                    <form novalidate name="form">
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" required ng-model="product.description" class="form-control" id="description" name="description" placeholder="Perfil">
 
-                            <div ng-show="form.$submitted || form.description.$touched || form.description.$error.server" class="text-danger padding form error-message">
-                                <p ng-show="form.description.$error.required">Este campo é obrigatório.</p>
-                                <p ng-show="form.description.$error.server">{{form.name.$error.server}}</p>
-                            </div>
-                        </div>
-                        <button type="button" ng-click="create(form)" class="btn btn-success">Criar</button>
-                    </form>
+            <fieldset>
+                <legend>Categories List</legend>
+
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th width="100%">Description</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(key, cat) in listCategory">
+                            <th scope="row">{{cat.id}}</th>
+                            <td>{{cat.description}}</td>
+                            <td>
+                                <button type="button" confirm-click="deleteCategory(cat)" confirm-click-message="Você tem certeza que deseja excluir a categoria?"
+                                    class="btn btn-danger btn-xs">Excluir</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+
+            <div class="margin-top">
+                <fieldset>
+                    <legend>Products List</legend>
+
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th width="60%">Description</th>
+                                <th width="20%">Quantity</th>
+                                <th width="20%">Cost</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key, value) in list">
+                                <th scope="row">{{value.id}}</th>
+                                <td>{{value.name}}</td>
+                                <td>{{value.quantity}}</td>
+                                <td>{{value.cost}}</td>
+                                <td>
+                                    <button type="button" confirm-click="deleteUser(value)" confirm-click-message="Você tem certeza que deseja excluir o usuário?"
+                                        class="btn btn-danger btn-xs">Excluir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </fieldset>
             </div>
+        </div>
+        <div class="col-md-5">
 
-            <div class="row margin-top">
+            <fieldset>
+                <legend>Create Category:</legend>
+                <form novalidate name="formCategory">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" required ng-model="category.description" class="form-control" id="description" name="description" placeholder="Description">
+
+                        <div ng-show="formCategory.$submitted || formCategory.description.$touched || formCategory.description.$error.server" class="text-danger padding form error-message">
+                            <p ng-show="formCategory.description.$error.required">Este campo é obrigatório.</p>
+                            <p ng-show="formCategory.description.$error.server">{{form.name.$error.server}}</p>
+                        </div>
+                    </div>
+                    <button type="button" ng-click="createCategory(formCategory)" class="btn btn-success">Create</button>
+                </form>
+            </fieldset>
+
+
+            <div class="margin-top">
                 <fieldset>
                     <legend>Create Product:</legend>
                     <form novalidate name="form">
@@ -53,11 +86,7 @@
                             <label for="category">Category</label>
 
                             <select ng-model="product.category" required class="form-control" id="category" name="category">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option ng-repeat="cat in listCategory" value="{{cat}}">{{cat.description}}</option>
                             </select>
 
                             <div ng-show="form.$submitted || form.category.$touched || form.description.$error.server" class="text-danger padding form error-message">
