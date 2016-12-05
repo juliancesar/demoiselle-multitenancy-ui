@@ -41,12 +41,13 @@ angular.module('dml')
         $scope.resetForm = function (form) {
             ValidationService.clear(form);
 
+            $scope.product = {};
+
             form.$setPristine();
             form.$setUntouched();
         };
 
         $scope.refreshList();
-
 
         // Category
 
@@ -87,6 +88,8 @@ angular.module('dml')
 
         $scope.resetFormCategory = function (form) {
             ValidationService.clear(form);
+
+            $scope.category = {};
 
             form.$setPristine();
             form.$setUntouched();
