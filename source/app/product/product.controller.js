@@ -1,7 +1,6 @@
 angular.module('dml')
     .controller('ProductController', function ($scope, $http, Notification, $rootScope, ConfigurationService, CategoryService, ProductService, ValidationService) {
 
-        $scope.product = { role: "ADMINISTRATOR" };
         $scope.tenant = ConfigurationService.getTenant();
 
         $scope.refreshList = function () {
@@ -41,8 +40,6 @@ angular.module('dml')
 
         $scope.resetForm = function (form) {
             ValidationService.clear(form);
-
-            $scope.product = { role: "ADMINISTRATOR" };
 
             form.$setPristine();
             form.$setUntouched();
@@ -90,8 +87,6 @@ angular.module('dml')
 
         $scope.resetFormCategory = function (form) {
             ValidationService.clear(form);
-
-            $scope.category = { role: "ADMINISTRATOR" };
 
             form.$setPristine();
             form.$setUntouched();

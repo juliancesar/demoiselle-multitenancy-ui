@@ -2,8 +2,8 @@ angular.module('dml')
     .service('TenantService', function($http, ConfigurationService) {
 
         var tenantTypes = [
-            { "name": "user", "apiUrl": "user/api/" },
-            { "name": "product", "apiUrl": "product/api/" },
+            { "name": "user", "apiUrl": "users/api/v1/" },
+            { "name": "product", "apiUrl": "products/api/v1/" },
             // { "name": "sale", "apiUrl" : "sale/api/" }
         ];
 

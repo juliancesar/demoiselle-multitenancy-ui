@@ -46,7 +46,7 @@
                         <tbody>
                             <tr ng-repeat="(key, value) in list">
                                 <th scope="row">{{value.id}}</th>
-                                <td>{{value.name}}</td>
+                                <td>{{value.description}}</td>
                                 <td>{{value.quantity}}</td>
                                 <td>{{value.cost}}</td>
                                 <td>
@@ -85,8 +85,8 @@
                         <div class="form-group">
                             <label for="category">Category</label>
 
-                            <select ng-model="product.category" required class="form-control" id="category" name="category">
-                                <option ng-repeat="cat in listCategory" value="{{cat}}">{{cat.description}}</option>
+                            <select ng-model="product.categoryId" required class="form-control" id="category" name="category">
+                                <option ng-repeat="cat in listCategory" value="{{cat.id}}">{{cat.description}}</option>
                             </select>
 
                             <div ng-show="form.$submitted || form.category.$touched || form.description.$error.server" class="text-danger padding form error-message">
