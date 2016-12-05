@@ -6,8 +6,8 @@ angular.module('dml')
 
         $scope.refreshList = function () {
             ProductService.list().then(function (response) {
-                $scope.list = response.data.content;
-                $scope.total = response.data.total;
+                $scope.list = response.data;
+                $scope.total = response.data.lenght;
             }, function (response) {
                 Notification.error({ message: 'Ocorreu um erro na listagem, tente novamente.' });
             });
@@ -59,8 +59,8 @@ angular.module('dml')
 
             if (formCategory.$valid) {
                 CategoryService.create($scope.category).then(function () {
-                    $scope.refreshList();
-                    $scope.resetForm(formCategory);
+                    $scope.refreshListCategory();
+                    $scope.resetFormCategory(formCategory);
 
                     Notification.success({ message: 'Category successfully registered.' });
                 }, function (response) {
@@ -73,11 +73,28 @@ angular.module('dml')
 
         $scope.refreshListCategory = function () {
             CategoryService.list().then(function (response) {
-                $scope.listCategory = response.data.content;
-                $scope.totalCategory = response.data.total;
+                $scope.listCategory = response.data;
+                $scope.totalCategory = response.data.lenght;
             }, function (response) {
                 Notification.error({ message: 'Ocorreu um erro na listagem, tente novamente.' });
             });
+        };
+
+        $scope.deleteCategory = function (cat) {
+            CategoryService.remove(cat).then(function (response) {
+                $scope.refreshListCategory();
+            }, function (response) {
+                Notification.error({ message: 'Verifique os dados e tente novamente' });
+            });
+        };
+
+        $scope.resetFormCategory = function (form) {
+            ValidationService.clear(form);
+
+            $scope.category = { role: "ADMINISTRATOR" };
+
+            form.$setPristine();
+            form.$setUntouched();
         };
 
         $scope.refreshListCategory();

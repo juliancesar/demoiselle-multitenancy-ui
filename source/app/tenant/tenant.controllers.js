@@ -11,7 +11,7 @@ angular.module('dml')
 
                 var finalList = [];
 
-                angular.forEach(response.data.content, function (t, key) {
+                angular.forEach(response.data, function (t, key) {
                     if (t.configuration)
                         t.configuration = JSON.parse(t.configuration);
                     this.push(t);
@@ -53,7 +53,7 @@ angular.module('dml')
         };
 
         $scope.deleteTenant = function (tenant) {
-            var promisses = TenantService.remove(tenant)
+            var promisses = TenantService.remove(tenant);
             
             $q.all(promisses).then(function (response) {
                 $scope.refreshList();

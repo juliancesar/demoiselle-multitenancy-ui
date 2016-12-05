@@ -6,8 +6,8 @@ angular.module('dml')
 
         $scope.refreshList = function () {
             UserService.list().then(function (response) {
-                $scope.list = response.data.content;
-                $scope.total = response.data.total;
+                $scope.list = response.data;
+                $scope.total = response.data.lenght;
             }, function (response) {
                 Notification.error({ message: 'Ocorreu um erro na listagem, tente novamente.' });
             });

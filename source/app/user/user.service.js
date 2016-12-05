@@ -18,7 +18,7 @@ angular.module('dml')
         services.remove = function(user) {
             var tenant = ConfigurationService.getTenant();
             
-            var urlDelete = ConfigurationService.getApiUrl() + tenant.name + '/user/' + user.id;
+            var urlDelete = TenantService.getUrlForTenantType('user') + tenant.name + '/user/' + user.id;
             return $http({
                 url: urlDelete, 
                 method: 'DELETE'               
