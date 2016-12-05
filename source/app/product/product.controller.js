@@ -21,7 +21,7 @@ angular.module('dml')
                     $scope.refreshList();
                     $scope.resetForm(form);
 
-                    Notification.success({ message: 'Usuário cadastrado com sucesso.' });
+                    Notification.success({ message: 'Product successfully registered.' });
                 }, function (response) {
                     ValidationService.addAll($scope, response.data, form);
                 });

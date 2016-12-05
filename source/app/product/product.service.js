@@ -10,7 +10,7 @@ angular.module('dml')
             
             return $http({
                 method: 'POST',
-                url: TenantService.getUrlForTenantType('product') + tenant.name + '/product',
+                url: TenantService.getUrlForTenantType('product') + tenant.name + '/products',
                 data: product                
             });
         };
@@ -18,7 +18,7 @@ angular.module('dml')
         services.remove = function(product) {
             var tenant = ConfigurationService.getTenant();
             
-            var urlDelete = ConfigurationService.getApiUrl() + tenant.name + '/product/' + product.id;
+            var urlDelete = ConfigurationService.getApiUrl() + tenant.name + '/products/' + product.id;
             return $http({
                 url: urlDelete, 
                 method: 'DELETE'               
@@ -28,13 +28,13 @@ angular.module('dml')
         services.list = function () {
             var tenant = ConfigurationService.getTenant();
             
-            return $http.get(TenantService.getUrlForTenantType('product') + tenant.name + '/product');
+            return $http.get(TenantService.getUrlForTenantType('product') + tenant.name + '/products');
         };
         
         services.count = function () {
             var tenant = ConfigurationService.getTenant();
                         
-            return $http.get(TenantService.getUrlForTenantType('product') + tenant.name + '/product/count');
+            return $http.get(TenantService.getUrlForTenantType('product') + tenant.name + '/products/count');
         };
 
         return services;

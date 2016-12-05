@@ -10,7 +10,7 @@ angular.module('dml')
             
             // Se o tenant é null manda para o home
             if (tenant == null) {
-                $location.path('/home')
+                $location.path('/server')
             }
         });
 

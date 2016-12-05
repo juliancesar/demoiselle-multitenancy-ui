@@ -41,7 +41,7 @@ angular.module('dml')
             for (i in urlsApi) {
                 promisses.push($http({
                     method: 'POST',
-                    url: urlsApi[i] + 'tenant',
+                    url: urlsApi[i] + 'tenants',
                     data: tenant
                 }));
             }
@@ -55,7 +55,7 @@ angular.module('dml')
             var promisses = [];
 
             for (i in urlsApi) {
-                var urlDelete = urlsApi[i] + 'tenant/' + tenant.id;
+                var urlDelete = urlsApi[i] + 'tenants/' + tenant.id;
                 promisses.push($http({
                     url: urlDelete,
                     method: 'DELETE'
@@ -67,7 +67,7 @@ angular.module('dml')
 
         services.list = function() {
             var urls = services.getApiUrlToTenantTypes();
-            return $http.get(urls[0] + 'tenant');
+            return $http.get(urls[0] + 'tenants');
         };
 
         return services;
