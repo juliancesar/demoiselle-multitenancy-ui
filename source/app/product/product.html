@@ -37,7 +37,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th width="60%">Description</th>
+                                <th width="40%">Description</th>
+                                <th width="20%">Category</th>
                                 <th width="20%">Quantity</th>
                                 <th width="20%">Cost</th>
                                 <th></th>
@@ -46,11 +47,12 @@
                         <tbody>
                             <tr ng-repeat="(key, value) in list">
                                 <th scope="row">{{value.id}}</th>
+                                <td>{{value.category.description}}</td>
                                 <td>{{value.description}}</td>
                                 <td>{{value.quantity}}</td>
                                 <td>{{value.cost}}</td>
                                 <td>
-                                    <button type="button" confirm-click="deleteUser(value)" confirm-click-message="Você tem certeza que deseja excluir o usuário?"
+                                    <button type="button" confirm-click="deleteProduct(value)" confirm-click-message="Você tem certeza que deseja excluir o usuário?"
                                         class="btn btn-danger btn-xs">Excluir</button>
                                 </td>
                             </tr>
@@ -85,8 +87,8 @@
                         <div class="form-group">
                             <label for="category">Category</label>
 
-                            <select ng-model="product.categoryId" required class="form-control" id="category" name="category">
-                                <option ng-repeat="cat in listCategory" value="{{cat.id}}">{{cat.description}}</option>
+                            <select ng-options="cat as cat.description for cat in listCategory" ng-model="product.category" required class="form-control" id="category" name="category">
+                                
                             </select>
 
                             <div ng-show="form.$submitted || form.category.$touched || form.description.$error.server" class="text-danger padding form error-message">
