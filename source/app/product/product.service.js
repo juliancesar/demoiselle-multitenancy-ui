@@ -2,9 +2,7 @@ angular.module('dml')
     .service('ProductService', function ($http, ConfigurationService, TenantService) {
 
         var services = [];
-
-        console.log(TenantService.getUrlForTenantType('product'));
-
+        
         services.create = function(product) {            
             var tenant = ConfigurationService.getTenant();
             
