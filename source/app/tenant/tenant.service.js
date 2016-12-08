@@ -4,7 +4,7 @@ angular.module('dml')
         var tenantTypes = [
             { "name": "user", "apiUrl": "users/api/v1/" },
             { "name": "product", "apiUrl": "products/api/v1/" },
-            // { "name": "sale", "apiUrl" : "sale/api/" }
+            { "name": "sale", "apiUrl" : "sales/api/v1/" }
         ];
 
         var services = [];
