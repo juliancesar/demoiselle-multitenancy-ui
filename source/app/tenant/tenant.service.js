@@ -55,7 +55,7 @@ angular.module('dml')
             var promisses = [];
 
             for (i in urlsApi) {
-                var urlDelete = urlsApi[i] + 'tenants/' + tenant.id;
+                var urlDelete = urlsApi[i] + 'tenants/' + tenant.name;
                 promisses.push($http({
                     url: urlDelete,
                     method: 'DELETE'
