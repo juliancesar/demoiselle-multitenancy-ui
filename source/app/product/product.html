@@ -68,7 +68,7 @@
                 <form novalidate name="formCategory">
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <input type="text" required ng-model="category.description" class="form-control" id="description" name="description" placeholder="Description">
+                        <input type="text" ng-model="category.description" class="form-control" id="description" name="description" placeholder="Description">
 
                         <div ng-show="formCategory.$submitted || formCategory.description.$touched || formCategory.description.$error.server" class="text-danger padding form error-message">
                             <p ng-show="formCategory.description.$error.required">Este campo é obrigatório.</p>
