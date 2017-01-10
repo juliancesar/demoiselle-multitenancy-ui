@@ -23,7 +23,7 @@ angular.module('dml')
 
                     Notification.success({ message: 'Product successfully registered.' });
                 }, function (response) {
-                    ValidationService.addAll($scope, response.data, form);
+                    ValidationService.addAll($scope, response.data, form, response.status);
                 });
             } else {
                 console.log("Dados do formulário inválidos.");
@@ -62,7 +62,7 @@ angular.module('dml')
 
                     Notification.success({ message: 'Category successfully registered.' });
                 }, function (response) {
-                    ValidationService.addAll($scope, response.data, formCategory);
+                    ValidationService.addAll($scope, response.data, formCategory, response.status);
                 });
             } else {
                 console.log("Dados do formulário inválidos.");

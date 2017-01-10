@@ -24,7 +24,7 @@ angular.module('dml')
 
                     Notification.success({ message: 'Usuário cadastrado com sucesso.' });
                 }, function (response) {
-                    ValidationService.addAll($scope, response.data, form);
+                    ValidationService.addAll($scope, response.data, form, response.status);
                 });
             } else {
                 console.log("Dados do formulário inválidos.");
