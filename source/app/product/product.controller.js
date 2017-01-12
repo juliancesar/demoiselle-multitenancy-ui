@@ -82,7 +82,7 @@ angular.module('dml')
             CategoryService.remove(cat).then(function (response) {
                 $scope.refreshListCategory();
             }, function (response) {
-                Notification.error({ message: 'Verifique os dados e tente novamente' });
+                ValidationService.addAll($scope, response.data, formCategory, response.status);
             });
         };
 
