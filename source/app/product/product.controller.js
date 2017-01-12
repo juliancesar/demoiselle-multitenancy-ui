@@ -78,7 +78,7 @@ angular.module('dml')
             });
         };
 
-        $scope.deleteCategory = function (cat) {
+        $scope.deleteCategory = function (formCategory, cat) {
             CategoryService.remove(cat).then(function (response) {
                 $scope.refreshListCategory();
             }, function (response) {

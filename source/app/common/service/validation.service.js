@@ -27,7 +27,7 @@ angular.module('dml')
 
                 Notification.error({ message: 'Você não tem permissão de acesso a esta funcionalidade.'});
             
-        } else {
+            } else {
                 angular.forEach(errors, function (errorObj, key) {
                     console.log(errorObj);
                     Notification.error({ message: 'Erro no servidor: ' + errorObj.error });
