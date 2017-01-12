@@ -61,7 +61,7 @@
 
                 <div class="form-group">
                     <label for="cpf">CPF</label>
-                    <input type="text" required ng-model="user.cpf" class="form-control" id="cpf" name="cpf" placeholder="CPF">
+                    <input type="text" ng-model="user.cpf" class="form-control" id="cpf" name="cpf" placeholder="CPF">
 
                     <div ng-show="form.$submitted || form.cpf.$touched || form.cpf.$error.server" class="text-danger padding form error-message">
                         <p ng-show="form.cpf.$error.required">Este campo é obrigatório.</p>
