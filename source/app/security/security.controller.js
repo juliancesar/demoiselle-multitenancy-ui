@@ -50,11 +50,17 @@ angular.module('dml')
                 method: 'GET',
                 url: TenantService.getUrlForTenantType('user') + tenant.name + '/testRoleAndPermission/' + url                
             }).then(function(response) {
-                 console.log(response.data);                 
+                 console.log(response.data);            
+
+                 $scope.statusRequest = response.status;
+
                  $scope.resultRequest = response.data; 
                  $scope.dateRequest = new Date();
             }, function(response) {
                  console.log(response.data);
+
+                $scope.statusRequest = response.status;
+
                  $scope.resultRequest = response.data;
                  $scope.dateRequest = new Date();
             });
